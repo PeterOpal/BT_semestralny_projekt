@@ -1,4 +1,5 @@
 <template>
+    <Navigation></Navigation>
     <div class="header-area" id="home-header">
         <MainHeader></MainHeader>
     </div>
@@ -33,6 +34,7 @@
 
     <Speakers></Speakers>
     <Program></Program>
+    <Footer></Footer>
 
     <!--
     PARTS: (podstranky vlastne tieto iste obsahuju, takze urcite COMPONENTS!!!!!!!!!!!)
@@ -48,11 +50,15 @@
 import MainHeader from "../components/MainHeader.vue";
 import Speakers from "../components/Speakers.vue";
 import Program from "../components/Program.vue";
+import Navigation from "../components/Navigation.vue"
+import Footer from "../components/Footer.vue"
 export default {
     components: {
         Program,
         Speakers,
-        MainHeader
+        MainHeader,
+        Footer,
+        Navigation
     },
     data(){
         return{

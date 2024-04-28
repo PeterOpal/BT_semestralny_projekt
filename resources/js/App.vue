@@ -1,17 +1,6 @@
 <template>
-    <Navigation></Navigation>
-    <MainView></MainView>
+
+    <router-view></router-view>
+    <Footer></Footer>
 </template>
-<script>
-import Navigation from "./components/Navigation.vue";
-import MainView from "./views/MainView.vue";
 
-export default {
-    components: {
-        MainView,
-        Navigation
-    }
-}
-
-console.log("Open admin: ");
-</script>

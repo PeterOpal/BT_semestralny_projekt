@@ -38,8 +38,8 @@
                 <!-- Collect the nav links and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="current"><a href="index.php">DOMOV</a></li>
-                        <li ><a href="speakers.php">SPEAKERS</a></li>
+                        <li class="current"><router-link to="/">DOMOV</router-link></li>
+                        <li><router-link to="/speakers">SPEAKERS</router-link></li>
                         <li ><a href="schedule.php">PROGRAM</a></li>
                         <li ><a href="sponsors.php">PARTNERI</a></li>
                         <li ><a href="contact.php">KONTAKT</a></li>
@@ -50,3 +50,8 @@
         </nav>
     </div><!-- /.navigation-area -->
 </template>
+
+<script>
+import { RouterLink } from 'vue-router'
+
+</script>
