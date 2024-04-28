@@ -1,0 +1,261 @@
+/*
+
+Author		:	BestPixels
+Template	:	EveMat | Responsive HTML Event Template
+Version		:	1.0
+
+*/
+
+.button{
+    color:#004953;
+}
+.button:hover{
+    background:#004953;
+}
+.button.alt{
+    background:#004953;
+}
+.button.alt:hover{
+    background:#283238;
+}
+.line-button:hover,
+.line-button:focus{
+    color:#004953;
+}
+.sub-heading h4:after{
+    background:#004953;
+}
+.sub-heading h4{
+    color:#004953;
+}
+.overlay{
+    background:rgba(0,0,0,.4);
+}
+.overlay-half{
+    background:rgba(0,0,0,.2);
+}
+p span{
+    background:#004953;
+}
+.top-info-bar{
+    background:#004953;
+}
+.navbar-default .navbar-nav > li > a:after{
+    background:#004953;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li.current > a,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus{
+    background:#004953;
+}
+.dropdown-menu {
+    border-top: 1px solid #004953;
+}
+.dropdown-menu li:hover {
+    border-bottom: 1px solid #004953;
+}
+.dropdown-menu > li.current > a {
+    background:#004953;
+}
+.page-heading .breadcrumb li a:hover{
+    color:#004953;
+}
+.video-play:hover{
+    color:#004953;
+}
+.speaker-over{
+    background:#283238;
+}
+.about-speaker a{
+    color:#004953;
+}
+.about-speaker a:after{
+    background:#004953;
+}
+.sperker-cover-over{
+    background:#283238;
+}
+.speakers-thought a{
+    color:#004953;
+}
+.speakers-thought a:after{
+    background:#004953;
+}
+.speaker-name h5:after{
+    color:#004953;
+}
+.sdt-top ul li a:hover{
+    color:#004953;
+}
+.schedules{
+    background:#004953;
+}
+.schedule-title{
+    background:#004953;
+    border-bottom:1px solid #283238;
+}
+.schedule-date .nav-tabs li{
+    border-bottom:1px solid #283238;
+}
+.schedule-date .nav-tabs li a{
+    background:#004953;
+}
+.schedule-date .nav-tabs > li.active > a,
+.schedule-date .nav-tabs > li.active > a:hover,
+.schedule-date .nav-tabs > li.active > a:focus {
+    background:#283238;
+}
+.schedule-info h5 a:hover{
+    color:#004953;
+}
+.package-title{
+    background:#004953;
+}
+.package-badge{
+    background:#283238;
+}
+.package-price{
+    background:#283238;
+}
+.price{
+    background:#004953;
+}
+.input-box .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #004953;
+}
+.sponsors-nav .nav-tabs  li.active a {
+    background:#004953;
+}
+.input-box-underline .input{
+    border-bottom:2px solid #004953;
+}
+.input-box-underline .input:focus{
+    background:#004953;
+}
+.single-package-select label{
+    border-bottom:2px solid #004953;
+}
+.single-package-select input:checked + label{
+    background:#004953;
+}
+.sb-over{
+    background:#004953;
+}
+
+.sb-over-innr a{
+    color:#004953;
+}
+.sb-over-innr a:after{
+    background:#004953;
+}
+.sb-social-share{
+    background:#004953;
+}
+.social-trigger{
+    border-bottom:1px solid #283238;
+}
+.post-content blockquote{
+    background:#004953;
+}
+.post-author ul li a:hover{
+    color:#004953;
+}
+.contact-info h4:after{
+    background:#004953;
+}
+.contact-info h4{
+    color:#004953;
+}
+.single-contact-info span{
+    color:#004953;
+}
+.contact-form h4:after{
+    background:#004953;
+}
+.contact-form h4{
+    color:#004953;
+}
+.sacc-over span.blue{
+    border:5px solid #004953;
+}
+.gallery-over{
+    background:#283238;
+}
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr--audio .plyr__controls button:hover,
+.plyr__play-large,
+.plyr--video .plyr__controls button.tab-focus:focus,
+.plyr--video .plyr__controls button:hover {
+    background: #004953;
+}
+.plyr__progress--played, .plyr__volume--display {
+    color: #004953;
+}
+.single-widget h5{
+    color:#004953;
+}
+.tag-list li a{
+    background:#004953;
+}
+.error-page .breadcrumb li a:hover{
+    color:#004953;
+}
+.error-page-content h5{
+    color:#004953;
+}
+.error-search-form input[type="text"]{
+    border-bottom:2px solid #004953;
+}
+.error-search-form input[type="submit"]{
+    background:#004953;
+}
+.footer-area{
+    background:#141414;
+}
+.footer-social li a:hover{
+    color:#283238;
+}
+.subscription-form input[type="text"]{
+    border:3px solid #000;
+}
+.subscription-form input[type="submit"]{
+    background:#000;
+}
+
+.more-image,
+.more-image:hover{
+    color:#fff;
+}
+.footer-bar-area{
+    background:#000;
+}
+
+/*Coustom Media Query CSS*/
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav .open .dropdown-menu {
+        border: 1px solid #004953;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li.current > a ,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        background: #004953;
+        color: #fff;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar-nav .open .dropdown-menu {
+        border: 1px solid #004953;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li.current > a ,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        background: #004953;
+        color: #fff;
+    }
+}
