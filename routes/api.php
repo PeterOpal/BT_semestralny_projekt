@@ -33,4 +33,5 @@ Route::post('logout', [\App\Http\Controllers\LoginController::class, 'logout']);
 Route::get('/sponsors', [SponsorsController::class, 'index']);
 Route::patch('/sponsors/{id}', [SponsorsController::class, 'update']);
 Route::delete('/sponsors/{id}', [SponsorsController::class, 'destroy']);
+Route::post('/sponsors', [SponsorsController::class, 'store']);
 

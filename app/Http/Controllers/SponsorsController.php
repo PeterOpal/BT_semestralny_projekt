@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sponsors;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class SponsorsController extends Controller
@@ -15,20 +16,16 @@ class SponsorsController extends Controller
     {
         $sponsors = Sponsors::all();
 
-        // base64 converting
-        foreach ($sponsors as $sponsor) {
-            $sponsor->photo = base64_encode($sponsor->photo);
-        }
-
         return response()->json($sponsors);
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,7 +33,16 @@ class SponsorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sponsor = new Sponsors();
+        if(!empty($request->post('link', ''))) {
+            $sponsor->link = $request->post('link');
+            $sponsor->photo = $request->post('photo', '');
+            $sponsor->save();
+            return response()->json($sponsor, 201);
+
+        } else {
+            return response()->json('Incorrect data', 422);
+        }
     }
 
     /**
