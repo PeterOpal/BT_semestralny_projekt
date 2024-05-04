@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sponsors;
 use Illuminate\Http\Request;
 
+
 class SponsorsController extends Controller
 {
     /**
@@ -59,7 +60,11 @@ class SponsorsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $sponsor = Sponsors::query()->findOrFail($id);
+        $sponsor->link = $request->input('link', null);
+
+        $sponsor->update();
+        return response()->json($sponsor, 200);
     }
 
     /**
@@ -67,6 +72,10 @@ class SponsorsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $sponsor = Sponsors::query()->find($id);
+        if($sponsor){
+            $sponsor -> delete();
+            return response()->json('Sponsor deleted', 201);
+        } else return response()->json("Sponsor not found", 404);
     }
 }

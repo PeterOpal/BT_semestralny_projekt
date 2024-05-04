@@ -89,7 +89,7 @@
                 title="vytvoriť sponzora"
             >
                 <template v-slot:actions>
-                    <v-btn text="Button"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-sponsors' })" text="Sponzory"></v-btn>
                 </template>
             </v-card>
         </v-col>

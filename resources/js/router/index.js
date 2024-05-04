@@ -6,6 +6,7 @@ import LoginView from "../views/LoginView.vue";
 import DashboardView from "../views/Dashboard.vue";
 import Stage from "../views/admin/Stage.vue"
 import axios from 'axios';
+import Sponsors from "../views/admin/Sponsors.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -45,6 +46,18 @@ const router = createRouter({
             path: '/admin-stage',
             name: "Admin-stage",
             component: Stage,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-sponsors',
+            name: "Admin-sponsors",
+            component: Sponsors,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

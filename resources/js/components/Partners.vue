@@ -9,7 +9,6 @@
                 </div>
             </div>
 
-
             <div class="tab-content sponsors-contents text-center">
                 <div role="tabpanel" class="tab-pane active" id="SilverSponsors">
                     <div class="row">
