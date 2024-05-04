@@ -13,28 +13,12 @@
             <div class="tab-content sponsors-contents text-center">
                 <div role="tabpanel" class="tab-pane active" id="SilverSponsors">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6 mb30">
-                            <div class="single-sponsor primary-shadow white-bg">
-                                <a target="_blank" href="https://gymbeam.sk/"><img
-                                    :src="'/images/sponsor/Gymbeam_logo_270x160.png'" alt="sponsor"/></a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb30">
-                            <div class="single-sponsor primary-shadow white-bg">
-                                <a target="_blank" href="https://www.powerplay.studio"><img
-                                    :src="'/images/sponsor/pps.png'" alt="sponsor"/></a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb30">
-                            <div class="single-sponsor primary-shadow white-bg">
-                                <a target="_blank" href="https://www.fpvai.ukf.sk/"><img
-                                    :src="'/images/sponsor/images.png'" alt="sponsor"/></a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb30">
-                            <div class="single-sponsor primary-shadow white-bg">
-                                <a target="_blank" href="https://www.facebook.com/CSNitra"><img
-                                    :src="'/images/sponsor/catering.png'" alt="sponsor"/></a>
+                        <div v-for="sponsor in sponsors" :key="sponsor.id">
+                            <div class="col-md-3 col-sm-6 mb30">
+                                <div class="single-sponsor primary-shadow white-bg">
+                                    <a target="_blank" :href="sponsor.link">
+                                        <img :src="'data:image/jpeg;base64,' + sponsor.photo" alt="sponsor"/></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,3 +27,24 @@
         </div><!-- /.container -->
     </div><!-- /.sponsors-area -->
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            sponsors: []
+        };
+    },
+    mounted() {
+        axios.get('/api/sponsors')
+            .then(response => {
+                this.sponsors = response.data;
+            })
+            .catch(error => {
+                console.error('Error fetching sponsors:', error);
+            });
+    },
+};
+</script>

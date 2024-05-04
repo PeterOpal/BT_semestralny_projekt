@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SponsorsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,10 @@ Route::middleware('auth:sanctum')->get('/authenticated', function () {
 });
 
 
-
+//admin
 Route::post('register', [\App\Http\Controllers\RegisterController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\LoginController::class, 'login']);
 Route::post('logout', [\App\Http\Controllers\LoginController::class, 'logout']);
+
+//sponsors
+Route::get('/sponsors', [SponsorsController::class, 'index']);
