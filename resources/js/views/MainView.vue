@@ -34,6 +34,7 @@
 
     <Speakers></Speakers>
     <Program></Program>
+    <Partners></Partners>
     <Footer></Footer>
 
     <!--
@@ -52,8 +53,10 @@ import Speakers from "../components/Speakers.vue";
 import Program from "../components/Program.vue";
 import Navigation from "../components/Navigation.vue"
 import Footer from "../components/Footer.vue"
+import Partners from "../components/Partners.vue";
 export default {
     components: {
+        Partners,
         Program,
         Speakers,
         MainHeader,
