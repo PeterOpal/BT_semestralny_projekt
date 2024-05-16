@@ -7,6 +7,8 @@ import DashboardView from "../views/Dashboard.vue";
 import Stage from "../views/admin/Stage.vue"
 import axios from 'axios';
 import Sponsors from "../views/admin/Sponsors.vue";
+import Testimonials from "../views/admin/Testimonials.vue";
+import SponsorsView from "../views/PartnersView.vue"
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -20,6 +22,11 @@ const router = createRouter({
             path: '/speakers',
             name: 'speakers',
             component: SpeakersView
+        },
+        {
+            path: '/sponsors',
+            name: 'sponsors',
+            component: SponsorsView
         },
         {
             path: '/register',
@@ -58,6 +65,18 @@ const router = createRouter({
             path: '/admin-sponsors',
             name: "Admin-sponsors",
             component: Sponsors,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-testimonials',
+            name: "Admin-testimonials",
+            component: Testimonials,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

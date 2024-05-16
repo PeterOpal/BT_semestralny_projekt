@@ -9,13 +9,19 @@
             <div class="row">
                 <div class="col-md-6 mb30">
                     <div class="video-intro primary-shadow">
-                        <img :src="'images/about/about-logo.jpg'" alt="video-intro" />
+                        <img :src="'images/about/about-logo.jpg'" alt="video-intro"/>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
                         <h4>Pár slov o konferencii nConnect</h4>
-                        <p>Po mnohých rokoch premýšľania a plánovania sme vytvorili nConnect, jedinečnú udalosť v Nitre, ktorá spája študentov IT a popredné firmy z tohto dynamického odvetvia. Konferencia nConnect nadväzuje na dlhoročnú tradíciu formátu "IT v praxi" Fakulty prírodných vied a informatiky UKF v Nitre. Táto iniciatíva je mostom medzi novou generáciou talentov a skúsenými profesionálmi, ktorý poskytuje fórum pre vzájomnú výmenu myšlienok a inšpirácií. Naše poslanie bolo jasné: vyplniť medzeru v regionálnej komunikácii a spolupráci v IT a nConnect je hrdým výsledkom tejto vízie.</p>
+                        <p>Po mnohých rokoch premýšľania a plánovania sme vytvorili nConnect, jedinečnú udalosť v Nitre,
+                            ktorá spája študentov IT a popredné firmy z tohto dynamického odvetvia. Konferencia nConnect
+                            nadväzuje na dlhoročnú tradíciu formátu "IT v praxi" Fakulty prírodných vied a informatiky
+                            UKF v Nitre. Táto iniciatíva je mostom medzi novou generáciou talentov a skúsenými
+                            profesionálmi, ktorý poskytuje fórum pre vzájomnú výmenu myšlienok a inšpirácií. Naše
+                            poslanie bolo jasné: vyplniť medzeru v regionálnej komunikácii a spolupráci v IT a nConnect
+                            je hrdým výsledkom tejto vízie.</p>
                     </div>
                     <div class="row">
                         <div>
@@ -34,17 +40,23 @@
 
     <Speakers></Speakers>
     <Program></Program>
-    <Partners></Partners>
+    <Testimonials></Testimonials>
+
+    <div class="sponsors-area gray-bg">
+        <div class="container">
+            <div class="sub-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Naši Partneri</h4>
+                    </div>
+                </div>
+            </div>
+            <Partners></Partners>
+        </div><!-- /.container -->
+    </div><!-- /.sponsors-area -->
+
+    <ContactArea></ContactArea>
     <Footer></Footer>
-
-    <!--
-    PARTS: (podstranky vlastne tieto iste obsahuju, takze urcite COMPONENTS!!!!!!!!!!!)
-    -PROGRAM
-    -POVEDALI O NAS
-    -NASI PARTNERI
-    -MAPA ||| KONTAKT
-    -->
-
 </template>
 
 <script>
@@ -54,8 +66,13 @@ import Program from "../components/Program.vue";
 import Navigation from "../components/Navigation.vue"
 import Footer from "../components/Footer.vue"
 import Partners from "../components/Partners.vue";
+import Testimonials from "../components/Testimonials.vue";
+import ContactArea from "../components/ContactArea.vue";
+
 export default {
     components: {
+        ContactArea,
+        Testimonials,
         Partners,
         Program,
         Speakers,
@@ -63,8 +80,8 @@ export default {
         Footer,
         Navigation
     },
-    data(){
-        return{
+    data() {
+        return {
             sekcia: [
                 {
                     question: 'Kto sme ?',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SponsorsController;
+use App\Http\Controllers\TestimonialsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,9 @@ Route::patch('/sponsors/{id}', [SponsorsController::class, 'update']);
 Route::delete('/sponsors/{id}', [SponsorsController::class, 'destroy']);
 Route::post('/sponsors', [SponsorsController::class, 'store']);
 
+
+//testimonials
+Route::get('/testimonials', [TestimonialsController::class, 'index']);
+Route::post('/testimonials', [TestimonialsController::class, 'store']);
+Route::delete('/testimonials/{id}', [TestimonialsController::class, 'destroy']);
+Route::patch('/testimonials/{id}', [TestimonialsController::class, 'update']);

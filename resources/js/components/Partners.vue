@@ -1,13 +1,5 @@
 <template>
-    <div class="sponsors-area gray-bg">
-        <div class="container">
-            <div class="sub-heading">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Naši Partneri</h4>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="tab-content sponsors-contents text-center">
                 <div role="tabpanel" class="tab-pane active" id="SilverSponsors">
@@ -23,8 +15,7 @@
                     </div>
                 </div><!-- /.tabpanel -->
             </div><!-- /.tab-content -->
-        </div><!-- /.container -->
-    </div><!-- /.sponsors-area -->
+
 </template>
 
 <script>

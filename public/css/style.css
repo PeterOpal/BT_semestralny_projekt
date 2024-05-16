@@ -107,7 +107,7 @@ a:hover {
    opacity:1;
 }
 
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
    opacity:1;
 }
 
@@ -711,7 +711,7 @@ p span{
 	color:#262626;
 }
 .speaker-name{
-	
+
 }
 .speaker-name h5{
 	line-height:70px;
@@ -809,8 +809,8 @@ p span{
 	margin-right: 0;
 	padding:13px 30px;
 }
-.schedule-date .nav-tabs > li.active > a, 
-.schedule-date .nav-tabs > li.active > a:hover, 
+.schedule-date .nav-tabs > li.active > a,
+.schedule-date .nav-tabs > li.active > a:hover,
 .schedule-date .nav-tabs > li.active > a:focus {
 	border:none;
 	color: #fff;
@@ -946,11 +946,11 @@ p span{
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	transition: all .5s ease;
-	width:100%;
+	/*width:100%;*/
 	margin-left:-2px;
 }
 .client-image img{
-	width:100%;
+	/*width:100%;*/
 }
 
 /* Pricing Area */
@@ -1130,8 +1130,8 @@ p span{
 	background:#7c4dff;
 	color:#fff;
 }
-.sponsors-nav .nav-tabs > li.active > a, 
-.sponsors-nav .nav-tabs > li.active > a:hover, 
+.sponsors-nav .nav-tabs > li.active > a,
+.sponsors-nav .nav-tabs > li.active > a:hover,
 .sponsors-nav .nav-tabs > li.active > a:focus {
 	border: 0px solid transparent;
 }
@@ -1911,7 +1911,7 @@ p span{
 }
 
 /* Magnific PopUp animation */
-    
+
 .mfp-wrap {
 	z-index: 2147483647;
 }
@@ -1961,7 +1961,7 @@ p span{
 /*Coustom Media Query CSS*/
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-		
+
 	.error-page .overlay{
 		padding:300px 0 310px;
 	}
@@ -1983,7 +1983,7 @@ p span{
 		background: #7c4dff;
 		color: #fff;
 	}
-	
+
 	.client-pagination{
 		margin-right:-20px;;
 	}
@@ -2020,18 +2020,18 @@ p span{
 		font-size: 12px;
 		line-height: 20px;
 	}
-	
+
 	.mobile-left{
 		text-align:left;
 	}
 	.mobile-center{
 		text-align:center;
 	}
-	
+
 	.client-pagination{
 		margin-right:-20px;;
 	}
-	
+
 	.nav > li {
 		margin-left: 15px;
 	}
@@ -2075,7 +2075,7 @@ p span{
 		display: block;
 		padding-left: 0;
 	}
-	
+
 	.sponsors-nav .nav-tabs li {
 		margin: 0;
 		width: 100%;
@@ -2083,7 +2083,7 @@ p span{
 	.sb-over-innr {
 		padding: 15px 20px;
 	}
-	
+
 	.post-content ul {
 		padding: 15px 20px;
 	}

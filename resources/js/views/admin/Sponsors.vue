@@ -18,7 +18,18 @@
         </v-card>
     </v-container>
 
-    <v-table>
+    <v-container v-if="loading">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img :src="'images/loading.gif'" alt="loading" height="100" width="100"/>
+                </div>
+            </div>
+        </div>
+    </v-container>
+
+    <div v-else>
+    <v-table style="margin-top: 50px;">
         <thead>
         <tr>
             <th class="text-center">
@@ -38,9 +49,9 @@
         <tbody>
         <tr v-for="item in sponsors" :key="item.id">
             <td class="text-center">{{ item.link }}</td>
-            <td class="text-center"><img width="100" height="100" :src="'data:image/jpeg;base64,' + item.photo" alt="sponsor"/></td>
-            <td class="text-center"><v-btn @click="editItem(item)">Edit {{ item.id }}</v-btn></td>
-            <td class="text-center"><v-btn @click="deleteSponsor(item.id)">Delete</v-btn></td>
+            <td class="text-center"><img width="120" height="120" :src="'data:image/jpeg;base64,' + item.photo" alt="sponsor"/></td>
+            <td class="text-center"><v-btn @click="editItem(item)"><span class="glyphicon glyphicon-pencil"></span></v-btn></td>
+            <td class="text-center"><v-btn @click="deleteSponsor(item.id)"><span class="glyphicon glyphicon-trash"></span></v-btn></td>
         </tr>
         </tbody>
     </v-table>
@@ -52,7 +63,7 @@
             <v-card-title>Edit Sponsor</v-card-title>
             <v-card-text>
                 <v-text-field v-model="selectedItem.link" label="Link"></v-text-field>
-                <img width="100" height="100" :src="'data:image/jpeg;base64,' + selectedItem.photo" alt="sponsor"/>
+                <img width="200" height="200" :src="'data:image/jpeg;base64,' + selectedItem.photo" alt="sponsor"/>
             </v-card-text>
             <v-card-actions>
                 <v-btn color="primary" @click="update">Update</v-btn>
@@ -86,6 +97,13 @@
         </v-card>
     </v-dialog>
     </div>
+    </div>
+
+    <v-app>
+        <v-snackbar v-model="showSnackBar" :timeout="2000" color="blue-grey" rounded="pill" :top="true">
+            <div class="text-center">{{ msg }}</div>
+        </v-snackbar>
+    </v-app>
 </template>
 
 <script>
@@ -95,31 +113,39 @@ export default {
     data() {
         return {
             sponsors: [],
+            loading: true,
             editModal: false,
             addModal: false,
             selectedItem: null,
             newSponsor: {
                 link: '',
                 photo: null
-            }
+            },
+            msg: '',
+            showSnackBar: false
         };
     },
     mounted() {
-        axios.get('/api/sponsors')
-            .then(response => {
-                this.sponsors = response.data;
-            })
-            .catch(error => {
-                console.error('Error fetching sponsors:', error);
-            });
+         this.getData()
     },
     methods: {
+        async getData() {
+            try {
+                const response = await axios.get('/api/sponsors');
+                this.sponsors = response.data;
+            } catch (error) {
+                console.error('Error fetching sponsors:', error);
+            } finally {
+                this.loading = false;
+            }
+        },
         nahratObrazok(event) {
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = (e) => { const base64Data = e.target.result.split(',')[1];this.newSponsor.photo = base64Data;};
+            reader.onload = (e) => { const base64Data = e.target.result.split(',')[1];this.newSponsor.photo = base64Data; };
             reader.readAsDataURL(file);
+            this.msg='Obrazok je nahraty!';this.showSnackBar=true;
         },
         editItem(item) {
             this.selectedItem = item;
@@ -130,15 +156,15 @@ export default {
             axios.patch(`/api/sponsors/${this.selectedItem.id}`, {
                 link: this.selectedItem.link,
                 photo: this.selectedItem.photo,
-            }).then(response => {}).catch(error => { console.error('Error updating sponsor:', error);});
+            }).then(response => {this.msg='Updated: '+response.data.link;this.showSnackBar=true;}).catch(error => { console.error('Error updating sponsor:', error);});
         },
         deleteSponsor(selectedID){
-            axios.delete(`/api/sponsors/${selectedID}`).then(response => { this.sponsors = this.sponsors.filter(item => item.id !== selectedID); })
+            axios.delete(`/api/sponsors/${selectedID}`).then(response => { this.msg='Removed item!';this.showSnackBar=true;this.sponsors = this.sponsors.filter(item => item.id !== selectedID); })
                 .catch(error => {console.error('Error deleting sponsor:', error);});
         },
         addSponsor() {
             this.addModal=false;
-            axios.post('api/sponsors', this.newSponsor).then(response => {this.sponsors.push(response.data); this.newSponsor.link = ''; this.newSponsor.photo = null;})
+            axios.post('api/sponsors', this.newSponsor).then(response => {this.msg='Succesfully added:'+response.data.link;this.showSnackBar=true;this.sponsors.push(response.data); this.newSponsor.link = ''; this.newSponsor.photo = null;})
                  .catch(error => {console.error('Error while adding new sponsor:', error);});
         }
     }

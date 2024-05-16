@@ -4,7 +4,6 @@
         <v-layout>
             <v-app-bar
                 color="teal-darken-4"
-                image="https://picsum.photos/1920/1080?random"
             >
                 <template v-slot:image>
                     <v-img
@@ -115,7 +114,7 @@
                 title="sekcia Povedali o nás"
             >
                 <template v-slot:actions>
-                    <v-btn text="Button"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-testimonials' })" text="Testimonials"></v-btn>
                 </template>
             </v-card>
         </v-col>
@@ -144,13 +143,30 @@ export default {
             axios.post('api/logout').then(() => {
                 this.$router.push({name: "login"});
             })
+        },
+        async getData(){
+            let cachedData = localStorage.getItem('cachedUserData');
+
+
+          if (cachedData) {
+              this.user = JSON.parse(cachedData);
+              console.log('cache');
+          } else {
+            axios.get('api/user')
+                .then((res) => {
+                    this.user = res.data;
+                    //console.log(res.data);
+                    localStorage.setItem('cachedUserData', JSON.stringify(res.data));
+                })
+                .catch((error) => {
+                    console.error('Error fetching user data:', error);
+                });
+        }
         }
     },
     mounted() {
-        axios.get('api/user').then((res) => {
-            this.user = res.data;
-            console.log(res.data);
-        })
+        this.getData();
     }
+
 }
 </script>

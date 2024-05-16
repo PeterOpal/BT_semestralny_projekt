@@ -38,14 +38,15 @@
                 <!-- Collect the nav links and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="current"><router-link to="/">DOMOV</router-link></li>
-                        <li><router-link to="/speakers">SPEAKERS</router-link></li>
-                        <li ><a href="schedule.php">PROGRAM</a></li>
-                        <li ><a href="sponsors.php">PARTNERI</a></li>
-                        <li ><a href="contact.php">KONTAKT</a></li>
-                        <li ><a target="_blank" href="https://jhbq6cjtw5n.formlets.com/forms/udzi7MdglP32QjfE/">REGISTRÁCIA</a></li>
+                        <li :class="{ 'current': $route.path === '/' }"><router-link to="/" exact>DOMOV</router-link></li>
+                        <li :class="{ 'current': $route.path === '/speakers' }"><router-link to="/speakers" exact>SPEAKERS</router-link></li>
+                        <li :class="{ 'current': $route.path === '/schedule' }"><router-link to="/schedule" exact>PROGRAM</router-link></li>
+                        <li :class="{ 'current': $route.path === '/sponsors' }"><router-link to="/sponsors" exact>PARTNERI</router-link></li>
+                        <li :class="{ 'current': $route.path === '/contact' }"><router-link to="/contact" exact>KONTAKT</router-link></li>
+                        <li><a target="_blank" href="https://jhbq6cjtw5n.formlets.com/forms/udzi7MdglP32QjfE/">REGISTRÁCIA</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
+
             </div><!-- /.container -->
         </nav>
     </div><!-- /.navigation-area -->
