@@ -16,16 +16,11 @@
                         </div>
                         <div class="schedule-date">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="active">
-                                    <a href="#date-1" data-toggle="tab">
-                                        <h4>stage name</h4>
-                                        <h5>datum</h5>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#date-2" data-toggle="tab">
-                                        <h4>stage name 2</h4>
-                                        <h5>datum</h5>
+                                <li v-for="(stage, index) in stages" :key="index"
+                                    :class="{ active: index === activeTabIndex }">
+                                    <a :href="'#date-' + (index + 1)" data-toggle="tab">
+                                        <h4>{{ stage.name }}</h4>
+                                        <h5>{{ stage.date }}</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -47,10 +42,9 @@
 
                             <!--content-->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane" id="date-2"> <!--id zo stage-->
-                                    <div class="panel-group" id="accordion-2" role="tablist">
-                                        <ProgramRow></ProgramRow>
-
+                                <div v-for="index in [0,1]" :key="index" :id="'date-' + (index + 1)" class="tab-pane" role="tabpanel">
+                                    <div class="panel-group" :id="'accordion-' + (index + 1)" role="tablist">
+                                        <ProgramRow :id="index+1"></ProgramRow>
                                     </div><!-- /.panel-group -->
                                 </div><!-- /.tab-pane -->
                             </div><!-- /.tab-content -->
@@ -70,5 +64,15 @@ export default {
     components: {
         ProgramRow
     },
+    data() {
+        return {
+            stages: [
+                {name: 'Stage Name 1', date: 'Date 1'},
+                {name: 'Stage Name 2', date: 'Date 2'},
+                // Add more stage data as needed
+            ],
+            activeTabIndex: 0 // Set the default active tab index
+        };
+    }
 }
 </script>

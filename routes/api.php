@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SponsorsController;
+use App\Http\Controllers\StageController;
 use App\Http\Controllers\TestimonialsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,9 @@ Route::get('/testimonials', [TestimonialsController::class, 'index']);
 Route::post('/testimonials', [TestimonialsController::class, 'store']);
 Route::delete('/testimonials/{id}', [TestimonialsController::class, 'destroy']);
 Route::patch('/testimonials/{id}', [TestimonialsController::class, 'update']);
+
+//stages
+Route::get('/stages', [StageController::class, 'index']);
+Route::patch('/stages/{id}', [StageController::class, 'update']);
+Route::delete('/stages/{id}', [StageController::class, 'destroy']);
+Route::post('/stages', [StageController::class, 'store']);

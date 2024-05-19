@@ -1,33 +1,8 @@
 <template>
-    <v-container>
-        <v-card class="mx-auto" color="grey-lighten-3" max-width="448">
-            <v-layout>
-                <v-app-bar
-                    color="teal-darken-4"
-                >
-                    <template v-slot:image>
-                        <v-img
-                            gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
-                        ></v-img>
-                    </template>
-
-                    <v-btn elevated @click="$router.go(-1)">naspat</v-btn>
-                    <v-app-bar-title>Testimonials</v-app-bar-title>
-                </v-app-bar>
-            </v-layout>
-        </v-card>
-    </v-container>
-
-
-    <v-container v-if="loading">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <img :src="'images/loading.gif'" alt="loading" height="100" width="100"/><br>LOADING
-                </div>
-            </div>
-        </div>
-    </v-container>
+    <AdminHeader page_name="Testimonials"></AdminHeader>
+    <div v-if="loading">
+        <Loading></Loading>
+    </div>
 
     <div v-else>
     <v-table style="margin-top: 50px;">
@@ -116,8 +91,11 @@
 
 <script>
 import axios from 'axios';
+import AdminHeader from "../../components/AdminHeader.vue";
+import Loading from "../../components/Loading.vue";
 
 export default {
+    components: {Loading, AdminHeader},
     data() {
         return {
             testimonials: [],
