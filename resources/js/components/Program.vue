@@ -16,11 +16,10 @@
                         </div>
                         <div class="schedule-date">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li v-for="(stage, index) in stages" :key="index"
-                                    :class="{ active: index === activeTabIndex }">
-                                    <a :href="'#date-' + (index + 1)" data-toggle="tab">
+                                <li v-for="(stage, index) in stages" :key="index">
+                                    <a :href="'#stage-' + stage.id" data-toggle="tab">
                                         <h4>{{ stage.name }}</h4>
-                                        <h5>{{ stage.date }}</h5>
+                                        <h5>{{ stage.datum }}</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -42,9 +41,9 @@
 
                             <!--content-->
                             <div class="tab-content">
-                                <div v-for="index in [0,1]" :key="index" :id="'date-' + (index + 1)" class="tab-pane" role="tabpanel">
-                                    <div class="panel-group" :id="'accordion-' + (index + 1)" role="tablist">
-                                        <ProgramRow :id="index+1"></ProgramRow>
+                                <div v-for="stage in stages" :key="stage.id" :id="'stage-' + stage.id" class="tab-pane" role="tabpanel">
+                                    <div class="panel-group" :id="'accordion-' + (stage.id + 1)" role="tablist">
+                                        <ProgramRow :id="Number(stage.id)"></ProgramRow>
                                     </div><!-- /.panel-group -->
                                 </div><!-- /.tab-pane -->
                             </div><!-- /.tab-content -->
@@ -56,23 +55,29 @@
     </div><!-- /.schedule-area -->
 </template>
 
-
 <script>
-import ProgramRow from "../components/ProgramRow.vue";
+import { useStageStore } from '@/stores/stageStore';
+import ProgramRow from "./ProgramRow.vue";
 
 export default {
-    components: {
-        ProgramRow
-    },
+    components: {ProgramRow},
     data() {
         return {
-            stages: [
-                {name: 'Stage Name 1', date: 'Date 1'},
-                {name: 'Stage Name 2', date: 'Date 2'},
-                // Add more stage data as needed
-            ],
-            activeTabIndex: 0 // Set the default active tab index
+            loading: true,
+            stages: [],
         };
-    }
-}
+    },
+    created() {
+        this.fetchStages();
+    },
+    methods: {
+        async fetchStages() {
+            try {
+                const stageStore = useStageStore();
+                if(stageStore.stages.length === 0)  await stageStore.fetchStages();
+                this.stages = stageStore.stages;
+            } catch (error) { console.error('Error fetching stages:', error);} finally {this.loading = false;}
+        },
+    },
+};
 </script>
