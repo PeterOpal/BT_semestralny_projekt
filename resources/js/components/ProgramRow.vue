@@ -1,4 +1,5 @@
 <template>
+    <!--ROW-->
     <div class="single-schedule panel panel-default">
         <div class="panel-heading" role="tab">
             <div class="panel-title single-schedule-title">
@@ -15,6 +16,7 @@
                 </a>
             </div>
         </div>
+        <!--CONTENT-->
         <div id="schedule-2-1" class="panel-collapse collapse in" role="tabpanel"> <!--schedule 2-2 -->
             <div class="panel-body">
                 <div class="row no-margin">
@@ -38,6 +40,48 @@
             </div>
         </div>
     </div><!-- /.single-schedule -->
+
+
+    <div class="single-schedule panel panel-default">
+        <div class="panel-heading" role="tab">
+            <div class="panel-title single-schedule-title">
+                <a class="" data-toggle="collapse" data-parent="#accordion-2"
+                   href="#schedule-2-2">
+                    <div class="row no-margin">
+                        <div class="col-sm-3 no-padding">
+                            <h5>02:00 Pm - 05:00PM</h5>
+                        </div>
+                        <div class="col-sm-9 no-padding">
+                            <h5>Where to start with material Design</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="schedule-2-2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="row no-margin">
+                    <div class="col-sm-3 no-padding">
+                        <div class="schedule-img">
+                            <img :src="'images/schedule/1.jpg'" alt="schedule"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 no-padding">
+                        <div class="schedule-info">
+                            <p>Material Design is a new Design language Invented by
+                                google & its going to rules design industry for few
+                                next years. So I think Every Designer Should have
+                                some or at least a little bot of knowledge about
+                                material design.</p>
+                            <h5><span>With</span> : Zarina Kame <small>Designer at
+                                <a href="">Google</a></small></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.single-schedule -->
+
 </template>
 
 <script>

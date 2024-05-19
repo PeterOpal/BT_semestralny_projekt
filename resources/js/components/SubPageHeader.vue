@@ -7,7 +7,7 @@
                     <div class="col-md-12">
                         <ul class="breadcrumb">
                             <li><a href="/">Domov</a></li>
-                            <li class="active">Partneri</li>
+                            <li class="active">{{page_name}}</li>
                         </ul>
                         <h2>{{ page_name }}</h2>
                     </div>

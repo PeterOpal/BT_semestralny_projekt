@@ -141,6 +141,7 @@ export default {
     methods: {
         logout() {
             axios.post('api/logout').then(() => {
+                localStorage.removeItem('cachedUserData');
                 this.$router.push({name: "login"});
             })
         },

@@ -1,5 +1,4 @@
 <template>
-
     <SubPageHeader page_name="Partneri"></SubPageHeader>
     <div class="sponsors-area gray-bg page-section">
         <div class="container">
