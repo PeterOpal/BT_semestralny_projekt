@@ -13,20 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/{any}', function () {
     return view('app');
-})->name('application');
+})->where('any', '.*');
 
-Route::get('/login', function () {
-    return view('app');
-})->name('application');
-
-Route::get('/dashboard', function () {
-    return view('app');
-})->name('application');
-
-Route::get('/register', function () {
-    return view('app');
-})->name('application');
 
 

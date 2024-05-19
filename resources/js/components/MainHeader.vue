@@ -1,20 +1,21 @@
 <template>
-        <Slider v-for="(slide, index) in slides" :key="index"
-                :slide_number="index + 1"
-                :datum="slide.datum"
-                :main_title="slide.main_title"
-                :links="slide.links" />
+    <Slider v-for="(slide, index) in slides" :key="index"
+            :slide_number="index + 1"
+            :datum="slide.datum"
+            :main_title="slide.main_title"
+            :links="slide.links"/>
 </template>
 
 <script>
 import Slider from "../components/Slider.vue";
+
 export default {
     components: {
         Slider
     },
 
-    data(){
-        return{
+    data() {
+        return {
             slides: [
                 //first slide
                 {

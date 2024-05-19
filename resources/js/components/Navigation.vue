@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href=""><img :src="'images/nconnect-logo.png'" alt="nConnect Logo" /></a>
+                    <a class="navbar-brand" href=""><router-link to="/" exact><img :src="'images/nconnect-logo.png'" alt="nConnect Logo" /></router-link></a>
                 </div>
 
                 <!-- Collect the nav links and other content for toggling -->

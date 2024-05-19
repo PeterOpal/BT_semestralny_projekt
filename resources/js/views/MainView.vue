@@ -1,7 +1,7 @@
 <template>
     <Navigation></Navigation>
     <div class="header-area" id="home-header">
-        <MainHeader></MainHeader>
+            <MainHeader></MainHeader>
     </div>
 
     <div class="about-area gray-bg" id="about">
@@ -51,12 +51,15 @@
                     </div>
                 </div>
             </div>
+            <keep-alive>
             <Partners></Partners>
+                </keep-alive>
         </div><!-- /.container -->
     </div><!-- /.sponsors-area -->
 
     <ContactArea></ContactArea>
     <Footer></Footer>
+
 </template>
 
 <script>

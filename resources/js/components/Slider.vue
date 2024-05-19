@@ -1,4 +1,5 @@
 <template>
+
 <div :class="['header-slide', 'header-slide-' + (slide_number + 1)]">
     <div class="overlay">
         <div class="container">

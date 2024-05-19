@@ -9,6 +9,7 @@ import axios from 'axios';
 import Sponsors from "../views/admin/Sponsors.vue";
 import Testimonials from "../views/admin/Testimonials.vue";
 import SponsorsView from "../views/PartnersView.vue"
+import ContactView from "../views/ContactView.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -27,6 +28,11 @@ const router = createRouter({
             path: '/sponsors',
             name: 'sponsors',
             component: SponsorsView
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: ContactView
         },
         {
             path: '/register',
