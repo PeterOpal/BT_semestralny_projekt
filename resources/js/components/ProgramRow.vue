@@ -8,10 +8,10 @@
                         <a class="collapsed" data-toggle="collapse" :href="'#schedule-' + id + '-' + index" :data-parent="'#accordion-' + id">
                             <div class="row no-margin">
                                 <div class="col-sm-3 no-padding">
-                                    <h5>{{ schedule.time }}</h5>
+                                    <h5>{{ schedule.cas }} </h5>
                                 </div>
                                 <div class="col-sm-9 no-padding">
-                                    <h5>{{ schedule.title }}</h5>
+                                    <h5>{{ schedule.nazov_prednasky }}</h5>
                                 </div>
                             </div>
                         </a>
@@ -23,13 +23,13 @@
                         <div class="row no-margin">
                             <div class="col-sm-3 no-padding">
                                 <div class="schedule-img">
-                                    <img :src="'images/schedule/' + schedule.image" alt="schedule"/>
+                                    <!--<img :src="'images/schedule/' + schedule.image" alt="schedule"/>-->
                                 </div>
                             </div>
                             <div class="col-sm-9 no-padding">
                                 <div class="schedule-info">
-                                    <p>{{ schedule.description }}</p>
-                                    <h5><span>With</span> : {{ schedule.presenter }} <small>Designer at <a href="">{{ schedule.company }}</a></small></h5>
+                                    <p>{{ schedule.popis }}</p>
+                                    <h5><span>With</span> : {{ schedule.speaker.meno }} <small>Designer at <a href="">company</a></small></h5>
                                 </div>
                             </div>
                         </div>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { useProgramStore } from '@/stores/programStore';
 export default {
     props: {
         id: {
@@ -48,42 +49,27 @@ export default {
             required: true
         }
     },
+    created() {
+        this.fetchPrograms();
+    },
+    methods: {
+        async fetchPrograms() {
+            try {
+                const programStore = useProgramStore();
+                if(programStore.program.length === 0)  await programStore.fetchPrograms();
+                this.programs = programStore.program;
+            } catch (error) { console.error('Error fetching programs:', error);} finally {this.loading = false;}
+        },
+    },
     data() {
         return {
-            scheduleItems: [
-                {
-                    id: 1,
-                    time: '09:00 AM - 02:00 PM',
-                    title: 'Introducing Material Design',
-                    image: '1.jpg',
-                    description: 'some description',
-                    presenter: 'Zarina Kame',
-                    company: 'Google'
-                },
-                {
-                    id: 6,
-                    time: '02:00 PM - 05:00 PM',
-                    title: 'Where to Start with Material Design',
-                    image: '1.jpg',
-                    description: 'Material Design is a new Design language Invented by Google & its going to rule design industry for the next few years. So I think Every Designer Should have some or at least a little bot of knowledge about material design.',
-                    presenter: 'Peter Kame',
-                    company: 'Google'
-                },
-                {
-                    id: 6,
-                    time: '02:00 PM - 05:00 PM',
-                    title: 'Kdawdwa',
-                    image: '1.jpg',
-                    description: 'So I think Every Designer Should have some or at least a little bot of knowledge about material design.',
-                    presenter: 'Jan Kame',
-                    company: 'Google'
-                }
-            ]
+            programs: [],
+            loading: true
         };
     },
     computed: {
         filteredScheduleItems() {
-            return this.scheduleItems.filter(item => item.id === this.id);
+            return this.programs.filter(item => item.stage_id === this.id);
         }
     }
 };

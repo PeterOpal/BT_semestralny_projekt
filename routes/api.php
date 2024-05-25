@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\StageController;
+use App\Http\Controllers\StageProgramController;
 use App\Http\Controllers\TestimonialsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,6 @@ Route::get('/stages', [StageController::class, 'index']);
 Route::patch('/stages/{id}', [StageController::class, 'update']);
 Route::delete('/stages/{id}', [StageController::class, 'destroy']);
 Route::post('/stages', [StageController::class, 'store']);
+
+//stageprogram
+Route::get('programs', [StageProgramController::class, 'index']);

@@ -10,6 +10,8 @@ import Sponsors from "../views/admin/Sponsors.vue";
 import Testimonials from "../views/admin/Testimonials.vue";
 import SponsorsView from "../views/PartnersView.vue"
 import ContactView from "../views/ContactView.vue";
+import CasoveOkna from "../views/admin/CasoveOkna.vue";
+import ProgramView from "../views/ProgramView.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -33,6 +35,11 @@ const router = createRouter({
             path: '/contact',
             name: 'contact',
             component: ContactView
+        },
+        {
+            path: '/schedule',
+            name: 'schedule',
+            component: ProgramView
         },
         {
             path: '/register',
@@ -83,6 +90,18 @@ const router = createRouter({
             path: '/admin-testimonials',
             name: "Admin-testimonials",
             component: Testimonials,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-casove-okna',
+            name: "Admin-casove-okna",
+            component: CasoveOkna,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

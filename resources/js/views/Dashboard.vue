@@ -48,7 +48,7 @@
                 title="časové okná"
             >
                 <template v-slot:actions>
-                    <v-btn text="Button"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-casove-okna' })" text="Časové okná"></v-btn>
                 </template>
             </v-card>
         </v-col>

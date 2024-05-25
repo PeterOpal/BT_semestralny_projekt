@@ -50,7 +50,7 @@
         <div class="text-center mt-16">
             <v-dialog v-model="addModal" max-width="500">
                 <template v-slot:activator="{ on }">
-                    <v-btn color="primary" dark v-on="on" @click="addModal=true">Pridat sponzora</v-btn>
+                    <v-btn color="primary" dark v-on="on" @click="addModal=true">Pridat stage</v-btn>
                 </template>
                 <v-card>
                     <v-card-title>Pridat stage</v-card-title>

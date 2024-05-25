@@ -1,6 +1,7 @@
 <template>
+    <Navigation></Navigation>
     <div class="center-content" style="width: 100%">
-        <v-sheet class="bg-deep-purple pa-12" rounded>
+        <v-sheet class="pa-12" style="background-color: #004953" rounded>
             <v-card class="mx-auto px-6 py-8 text-center" max-width="344" title="Prihlasenie">
                 <v-form v-model="form" @submit.prevent="onSubmit">
                     <v-text-field
@@ -53,8 +54,11 @@
 </style>
 <script>
 import axios from 'axios';
-
+import Navigation from '../components/Navigation.vue';
 export default {
+    components: {
+        Navigation
+    },
     data() {
         return {
             email: null,

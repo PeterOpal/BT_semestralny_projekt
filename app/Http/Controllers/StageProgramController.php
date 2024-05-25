@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StageProgram;
 use Illuminate\Http\Request;
 
 class StageProgramController extends Controller
@@ -12,6 +13,8 @@ class StageProgramController extends Controller
     public function index()
     {
         //
+        $programs = StageProgram::with('speaker')->get();
+        return response()->json($programs);
     }
 
     /**
