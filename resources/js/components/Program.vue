@@ -1,13 +1,4 @@
 <template>
-    <div class="schedule-area gray-bg">
-        <div class="container">
-            <div class="sub-heading">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>PROGRAM</h4>
-                    </div>
-                </div>
-            </div>
             <div class="schedules">
                 <div class="row no-margin">
                     <div class="col-md-3 no-padding">
@@ -51,8 +42,7 @@
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.schedules -->
-        </div>
-    </div><!-- /.schedule-area -->
+
 </template>
 
 <script>

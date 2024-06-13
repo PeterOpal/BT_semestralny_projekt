@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Speakers;
+use App\Models\Sloty;
 use Illuminate\Http\Request;
 
-class SpeakersController extends Controller
+class SlotyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class SpeakersController extends Controller
     public function index()
     {
         //
-        $speakers = Speakers::all();
-        return response()->json($speakers);
+        $sloty = Sloty::all();
+        return response()->json($sloty);
     }
 
     /**
@@ -31,6 +31,16 @@ class SpeakersController extends Controller
     public function store(Request $request)
     {
         //
+        $slot = new Sloty();
+        if(!empty($request->post('od')) || !empty($request->post('do'))) {
+            $slot->od = $request->post('od');
+            $slot->do = $request->post('do');
+            $slot->save();
+            return response()->json($slot, 201);
+
+        } else {
+            return response()->json('Incorrect data', 422);
+        }
     }
 
     /**
@@ -55,6 +65,12 @@ class SpeakersController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $sloty = Sloty::query()->findOrFail($id);
+        $sloty->od = $request->input('data.od');
+        $sloty->do = $request->input('data.do');
+
+        $sloty->update();
+        return response()->json($sloty, 200);
     }
 
     /**
@@ -63,5 +79,10 @@ class SpeakersController extends Controller
     public function destroy(string $id)
     {
         //
+        $slot = Sloty::query()->find($id);
+        if($slot){
+            $slot -> delete();
+            return response()->json('Slot deleted', 201);
+        } else return response()->json("Slot not found", 404);
     }
 }

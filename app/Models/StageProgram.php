@@ -13,9 +13,13 @@ class StageProgram extends Model
     protected $table = 'stage_programs';
     protected $fillable = ["cas", "nazov_prednasky", "popis", "stage_id", "speaker_id"];
 
-    //tu pripojit s tabulkou speakers
     public function speaker(): BelongsTo
     {
         return $this->belongsTo(Speakers::class, 'speaker_id');
+    }
+
+    public function sloty(): BelongsTo
+    {
+        return $this->belongsTo(Sloty::class, 'cas');
     }
 }

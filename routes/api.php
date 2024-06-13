@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SlotyController;
+use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\StageProgramController;
@@ -53,3 +55,15 @@ Route::post('/stages', [StageController::class, 'store']);
 
 //stageprogram
 Route::get('programs', [StageProgramController::class, 'index']);
+Route::post('programs', [StageProgramController::class, 'store']);
+Route::delete('/programs/{id}', [StageProgramController::class, 'destroy']);
+Route::patch('/programs/{id}', [StageProgramController::class, 'update']);
+
+//speakers
+Route::get('/speakers', [SpeakersController::class, 'index']);
+
+//sloty
+Route::get('/sloty', [SlotyController::class, 'index']);
+Route::post('/sloty', [SlotyController::class, 'store']);
+Route::delete('/sloty/{id}', [SlotyController::class, 'destroy']);
+Route::patch('/sloty/{id}', [SlotyController::class, 'update']);

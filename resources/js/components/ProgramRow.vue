@@ -8,7 +8,7 @@
                         <a class="collapsed" data-toggle="collapse" :href="'#schedule-' + id + '-' + index" :data-parent="'#accordion-' + id">
                             <div class="row no-margin">
                                 <div class="col-sm-3 no-padding">
-                                    <h5>{{ schedule.cas }} </h5>
+                                    <h5>{{ schedule.sloty.od.split(":")[0] }}:{{ schedule.sloty.od.split(":")[1] }}-{{ schedule.sloty.do.split(":")[0] }}:{{ schedule.sloty.do.split(":")[1] }} </h5>
                                 </div>
                                 <div class="col-sm-9 no-padding">
                                     <h5>{{ schedule.nazov_prednasky }}</h5>
@@ -29,7 +29,11 @@
                             <div class="col-sm-9 no-padding">
                                 <div class="schedule-info">
                                     <p>{{ schedule.popis }}</p>
-                                    <h5><span>With</span> : {{ schedule.speaker.meno }} <small>Designer at <a href="">company</a></small></h5>
+                                    <h5>{{ schedule.speaker ? "Speaker: "+schedule.speaker.meno : "" }}
+                                        <template v-if="schedule.speaker">
+                                            <a :href="schedule.speaker.company_link">{{schedule.speaker.company_name}}</a>
+                                        </template>
+                                    </h5>
                                 </div>
                             </div>
                         </div>

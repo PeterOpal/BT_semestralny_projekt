@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stage_programs', function (Blueprint $table) {
+        Schema::create('casove_sloty', function (Blueprint $table) {
             $table->id();
-            $table->integer('cas');
-            $table->string('nazov_prednasky', length: 50);
-            $table->text('popis');
-            $table->integer('stage_id');
-            $table->integer('speaker_id');
+            $table->time("od",  0);
+            $table->time("do", 0);
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stage_programs');
+        Schema::dropIfExists('sloties');
     }
 };

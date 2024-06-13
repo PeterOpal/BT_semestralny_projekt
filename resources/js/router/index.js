@@ -12,6 +12,7 @@ import SponsorsView from "../views/PartnersView.vue"
 import ContactView from "../views/ContactView.vue";
 import CasoveOkna from "../views/admin/CasoveOkna.vue";
 import ProgramView from "../views/ProgramView.vue";
+import Sloty from "../views/admin/Sloty.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -90,6 +91,18 @@ const router = createRouter({
             path: '/admin-testimonials',
             name: "Admin-testimonials",
             component: Testimonials,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-sloty',
+            name: "Admin-sloty",
+            component: Sloty,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

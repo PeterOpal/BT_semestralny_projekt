@@ -71,11 +71,11 @@
             <v-card
                 class="mx-auto v-card--outlined"
                 max-width="344"
-                subtitle="CRUD operácie pre prednášky k jednotlivým speakrom - krátky popis/dlhý popis"
-                title="prednášky k jednotlivým speakrom"
+                subtitle="CRUD operácie na časové intervaly"
+                title="Časové sloty"
             >
                 <template v-slot:actions>
-                    <v-btn text="Button"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-sloty' })" text="Sloty"></v-btn>
                 </template>
             </v-card>
         </v-col>

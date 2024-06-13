@@ -13,7 +13,7 @@ class StageProgramController extends Controller
     public function index()
     {
         //
-        $programs = StageProgram::with('speaker')->get();
+        $programs = StageProgram::with(['speaker:id,meno', 'sloty:id,od,do'])->get();
         return response()->json($programs);
     }
 
@@ -31,6 +31,20 @@ class StageProgramController extends Controller
     public function store(Request $request)
     {
         //
+        $program = new StageProgram();
+        if(!empty($request->post('cas')) || !empty($request->post('nazov_prednasky')) || !empty($request->post('popis'))) {
+            $program->cas = $request->post('cas');
+            $program->nazov_prednasky = $request->post('nazov_prednasky');
+            $program->popis = $request->post('popis');
+            $program->stage_id = $request->post('stage_id');
+            $program->speaker_id = $request->post('speaker_id', 0);
+            $program->save();
+            $program->load('speaker');
+            return response()->json($program, 201);
+
+        } else {
+            return response()->json('Incorrect data', 422);
+        }
     }
 
     /**
@@ -54,7 +68,14 @@ class StageProgramController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $program = StageProgram::query()->findOrFail($id);
+        $program->cas = $request->input('data.cas', '');
+        $program->nazov_prednasky = $request->input('data.nazov_prednasky', '');
+        $program->popis = $request->input('data.popis', "");
+        $program->speaker_id = $request->input("data.speaker_id", "");
+        $program->update();
+        $program->load('speaker');
+        return response()->json(['nazov_prednasky'=>$program->nazov_prednasky, 'speaker'=>$program->speaker->meno],200);
     }
 
     /**
@@ -63,5 +84,10 @@ class StageProgramController extends Controller
     public function destroy(string $id)
     {
         //
+        $program = StageProgram::query()->find($id);
+        if($program){
+            $program -> delete();
+            return response()->json('Program deleted', 201);
+        } else return response()->json("Program not found", 404);
     }
 }

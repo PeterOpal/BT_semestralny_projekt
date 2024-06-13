@@ -39,9 +39,20 @@
     </div><!-- /.about-area -->
 
     <Speakers></Speakers>
+    <div class="schedule-area gray-bg">
+        <div class="container">
+            <div class="sub-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>PROGRAM</h4>
+                    </div>
+                </div>
+            </div>
     <Program></Program>
-    <Testimonials></Testimonials>
+        </div>
+    </div><!-- /.schedule-area -->
 
+    <Testimonials></Testimonials>
     <div class="sponsors-area gray-bg">
         <div class="container">
             <div class="sub-heading">
@@ -51,9 +62,7 @@
                     </div>
                 </div>
             </div>
-            <keep-alive>
             <Partners></Partners>
-                </keep-alive>
         </div><!-- /.container -->
     </div><!-- /.sponsors-area -->
 
