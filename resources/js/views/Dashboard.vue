@@ -45,7 +45,7 @@
                 color=""
                 max-width="344"
                 subtitle=" CRUD operácie pre časové okná v existujúcich stagoch"
-                title="časové okná"
+                title="Časové okná"
             >
                 <template v-slot:actions>
                     <v-btn @click="$router.push({ name: 'Admin-casove-okna' })" text="Časové okná"></v-btn>
@@ -59,10 +59,10 @@
                 color=""
                 max-width="344"
                 subtitle="CRUD operácie pre profily speakerov - obrázok/krátky popis/dlhý popis/linky na sociálne siete"
-                title="profily speakerov"
+                title="Profily speakerov"
             >
                 <template v-slot:actions>
-                    <v-btn text="Button"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-speakers' })" text="Speakers"></v-btn>
                 </template>
             </v-card>
         </v-col>
@@ -85,7 +85,7 @@
                 class="mx-auto v-card--outlined"
                 max-width="344"
                 subtitle="vytvoriť sponzora"
-                title="vytvoriť sponzora"
+                title="Sponzory"
             >
                 <template v-slot:actions>
                     <v-btn @click="$router.push({ name: 'Admin-sponsors' })" text="Sponzory"></v-btn>
@@ -97,8 +97,8 @@
             <v-card
                 class="mx-auto v-card--outlined"
                 max-width="344"
-                subtitle="vedieť kto sa na danú konferenciu zaregistroval"
-                title="Kto sa zaregistroval"
+                subtitle="Kto sa na danú konferenciu zaregistroval"
+                title="Registrované študenti"
             >
                 <template v-slot:actions>
                     <v-btn text="Button"></v-btn>
@@ -110,11 +110,24 @@
             <v-card
                 class="mx-auto v-card--outlined"
                 max-width="344"
-                subtitle=" CRUD operácie nad sekciou Povedali o nás - foto, výrok"
-                title="sekcia Povedali o nás"
+                subtitle="CRUD operácie nad sekciou Povedali o nás - foto, výrok"
+                title="sekcia-Povedali o nás"
             >
                 <template v-slot:actions>
                     <v-btn @click="$router.push({ name: 'Admin-testimonials' })" text="Testimonials"></v-btn>
+                </template>
+            </v-card>
+        </v-col>
+
+        <v-col cols="3">
+            <v-card
+                class="mx-auto v-card--outlined"
+                max-width="344"
+                subtitle="WYSIWYG editor"
+                title="Custom stránky"
+            >
+                <template v-slot:actions>
+                    <v-btn @click="$router.push({ name: 'Admin-testimonials' })" text="Editor"></v-btn>
                 </template>
             </v-card>
         </v-col>

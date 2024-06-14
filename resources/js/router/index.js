@@ -13,6 +13,7 @@ import ContactView from "../views/ContactView.vue";
 import CasoveOkna from "../views/admin/CasoveOkna.vue";
 import ProgramView from "../views/ProgramView.vue";
 import Sloty from "../views/admin/Sloty.vue";
+import Speakers from "../views/admin/Speakers.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -103,6 +104,18 @@ const router = createRouter({
             path: '/admin-sloty',
             name: "Admin-sloty",
             component: Sloty,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-speakers',
+            name: "Admin-speakers",
+            component: Speakers,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

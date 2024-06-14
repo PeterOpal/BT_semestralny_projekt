@@ -61,6 +61,9 @@ Route::patch('/programs/{id}', [StageProgramController::class, 'update']);
 
 //speakers
 Route::get('/speakers', [SpeakersController::class, 'index']);
+Route::post('/speakers', [SpeakersController::class, 'store']);
+Route::delete('/speakers/{id}', [SpeakersController::class, 'destroy']);
+Route::patch('/speakers/{id}', [SpeakersController::class, 'update']);
 
 //sloty
 Route::get('/sloty', [SlotyController::class, 'index']);

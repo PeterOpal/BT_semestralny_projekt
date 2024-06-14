@@ -11,7 +11,7 @@ class Speakers extends Model
     use HasFactory;
     protected $table = 'speakers';
 
-    protected $fillable = ["meno", "photo", "kratky_popis", "dlhy_popis", "facebook_link", "twitter_link", "web_link"];
+    protected $fillable = ["meno", "photo", "kratky_popis", "dlhy_popis", "company_name", "company_link", "headliner", "facebook_link", "twitter_link", "web_link"];
 
     public function stagePrograms(): HasOne
     {

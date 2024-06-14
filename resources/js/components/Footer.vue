@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-6">
                 <div class="single-footer-widget">
-                    <a href="index.php" class="footer-logo">
+                    <a href="#" class="footer-logo">
                         <img :src="'images/footer-logo.png'" alt="logo"/>
                     </a>
                     <p>Spájame IT komunity</p>
