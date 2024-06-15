@@ -25,7 +25,7 @@
             </thead>
             <tbody>
             <tr v-for="item in speakers" :key="item.id">
-                <td class="text-center"><img width="120" height="120" :src="'data:image/jpeg;base64,' + item.photo" alt="speaker"/></td>
+                <td class="text-center"><img width="100" height="100" :src="'data:image/jpeg;base64,' + item.photo" alt="speaker"/></td>
                 <td class="text-center">{{ item.meno }}</td>
                 <td class="text-center">{{ item.kratky_popis }}</td>
                 <td class="text-center">{{ item.dlhy_popis }}</td>
@@ -98,7 +98,7 @@
                 <v-text-field v-model="selectedItem.facebook_link" label="Facebook link"></v-text-field>
                 <v-text-field v-model="selectedItem.twitter_link" label="Twitter link"></v-text-field>
                 <v-text-field v-model="selectedItem.web_link" label="Webova stranka speakera"></v-text-field>
-                <img width="200" height="200" :src="'data:image/jpeg;base64,' + selectedItem.photo" alt="sponsor"/>
+                <img width="100" height="100" :src="'data:image/jpeg;base64,' + selectedItem.photo" alt="sponsor"/>
             </v-card-text>
             <v-card-actions>
                 <v-btn color="primary" @click="update">Update</v-btn>

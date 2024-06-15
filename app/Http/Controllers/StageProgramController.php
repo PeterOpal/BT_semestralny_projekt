@@ -13,7 +13,7 @@ class StageProgramController extends Controller
     public function index()
     {
         //
-        $programs = StageProgram::with(['speaker:id,meno', 'sloty:id,od,do'])->get();
+        $programs = StageProgram::with(['speaker:id,meno,company_name,company_link,photo', 'sloty:id,od,do'])->get();
         return response()->json($programs);
     }
 

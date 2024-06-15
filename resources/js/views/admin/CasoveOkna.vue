@@ -30,7 +30,10 @@
                             <td class="text-center">{{ getCas(program.cas) }}</td>
                             <td class="text-center">{{ program.nazov_prednasky }}</td>
                             <td class="text-center">{{ program.popis }}</td>
-                            <td class="text-center">{{ program.speaker ? program.speaker.meno : 'Nie je priradeny' }}</td>
+                            <td class="text-center">
+                                <span v-if="program.speaker">{{ program.speaker.meno }}</span>
+                                <span v-else v-html="'<i>Nie je priradeny</i>'"></span>
+                            </td>
                             <td class="text-center">
                                 <v-btn @click="editItem(program)"><span class="glyphicon glyphicon-pencil"></span></v-btn>
                             </td>

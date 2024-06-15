@@ -23,7 +23,12 @@
                         <div class="row no-margin">
                             <div class="col-sm-3 no-padding">
                                 <div class="schedule-img">
-                                    <!--<img :src="'images/schedule/' + schedule.image" alt="schedule"/>-->
+                                    <template v-if="schedule.speaker">
+                                        <img :src="'data:image/jpeg;base64,' + schedule.speaker.photo" alt="schedule"/>
+                                    </template>
+                                    <template v-else>
+                                        <img :src="'images/speakers/nconnect.jpg'" alt="nconnect"/>
+                                    </template>
                                 </div>
                             </div>
                             <div class="col-sm-9 no-padding">
@@ -31,7 +36,7 @@
                                     <p>{{ schedule.popis }}</p>
                                     <h5>{{ schedule.speaker ? "Speaker: "+schedule.speaker.meno : "" }}
                                         <template v-if="schedule.speaker">
-                                            <a :href="schedule.speaker.company_link">{{schedule.speaker.company_name}}</a>
+                                            <a target="_blank" style="padding-left: 60px" :href="schedule.speaker.company_link">{{schedule.speaker.company_name}}</a>
                                         </template>
                                     </h5>
                                 </div>

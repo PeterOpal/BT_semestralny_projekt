@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stage_programs', function (Blueprint $table) {
             $table->id();
             $table->integer('cas');
-            $table->string('nazov_prednasky', length: 50);
+            $table->string('nazov_prednasky');
             $table->text('popis');
             $table->integer('stage_id');
             $table->integer('speaker_id');
