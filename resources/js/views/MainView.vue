@@ -38,7 +38,29 @@
         </div><!-- /.container -->
     </div><!-- /.about-area -->
 
-    <Speakers></Speakers>
+    <!--random 4 speakert valasszon ki a speaker store-bol-->
+    <div class="speakers-area grey-bg">
+        <div class="container">
+            <div class="sub-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Speakers</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <Speakers v-for="speaker in getRandomSpeakers()"
+                          :id="speaker.id"
+                          :dlhy_popis="speaker.dlhy_popis"
+                          :company_name="speaker.company_name"
+                          :kratky_popis="speaker.kratky_popis"
+                          :speaker-name="speaker.meno"
+                          :photo="speaker.photo">
+                </Speakers>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.speakers-area -->
+
     <div class="schedule-area gray-bg">
         <div class="container">
             <div class="sub-heading">
@@ -80,7 +102,7 @@ import Footer from "../components/Footer.vue"
 import Partners from "../components/Partners.vue";
 import Testimonials from "../components/Testimonials.vue";
 import ContactArea from "../components/ContactArea.vue";
-
+import { useSpeakerStore } from '@/stores/speakersStore';
 export default {
     components: {
         ContactArea,
@@ -94,6 +116,8 @@ export default {
     },
     data() {
         return {
+            loading: true,
+            speakers: [],
             sekcia: [
                 {
                     question: 'Kto sme ?',
@@ -105,6 +129,29 @@ export default {
                 }
             ]
         }
-    }
+    },
+    created() {
+        this.fetchSpeakers();
+    },
+    methods: {
+        async fetchSpeakers() {
+            try {
+                const speakerStore = useSpeakerStore();
+                if(speakerStore.speakers.length === 0)  await speakerStore.fetchSpeakers();
+                this.speakers = speakerStore.speakers;
+            } catch (error) { console.error('Error fetching speakers:', error);} finally {this.loading = false;}
+        },
+        shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        },
+        getRandomSpeakers() {
+            this.speakers = this.shuffleArray(this.speakers);
+            return this.speakers.slice(0, 4);
+        }
+    },
 }
 </script>

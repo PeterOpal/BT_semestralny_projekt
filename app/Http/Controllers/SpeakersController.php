@@ -87,17 +87,10 @@ class SpeakersController extends Controller
         $speaker->company_name=$request->input("data.company_name");
         $speaker->company_link=$request->input("data.company_link");
         $speaker->headliner=$request->input("data.headliner");
-        if ($request->filled('data.facebook_link')) {
-            $speaker->facebook_link = $request->input('data.facebook_link');
-        }
+        $speaker->facebook_link = $request->input('data.facebook_link');
+        $speaker->twitter_link = $request->input('data.twitter_link');
+        $speaker->web_link = $request->input('data.web_link');
 
-        if ($request->filled('data.twitter_link')) {
-            $speaker->twitter_link = $request->input('data.twitter_link');
-        }
-
-        if ($request->filled('data.web_link')) {
-            $speaker->web_link = $request->input('data.web_link');
-        }
         $speaker->update();
         return response()->json($speaker,200);
     }
