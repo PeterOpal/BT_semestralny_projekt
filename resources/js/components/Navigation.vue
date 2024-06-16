@@ -43,7 +43,7 @@
                         <li :class="{ 'current': $route.path === '/schedule' }"><router-link to="/schedule" exact>PROGRAM</router-link></li>
                         <li :class="{ 'current': $route.path === '/sponsors' }"><router-link to="/sponsors" exact>PARTNERI</router-link></li>
                         <li :class="{ 'current': $route.path === '/contact' }"><router-link to="/contact" exact>KONTAKT</router-link></li>
-                        <li><a target="_blank" href="https://jhbq6cjtw5n.formlets.com/forms/udzi7MdglP32QjfE/">REGISTRÁCIA</a></li>
+                        <li :class="{ 'current': $route.path === '/student-registration' }"><router-link to="/student-registration" exact>REGISTRÁCIA</router-link></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
 

@@ -38,7 +38,6 @@
         </div><!-- /.container -->
     </div><!-- /.about-area -->
 
-    <!--random 4 speakert valasszon ki a speaker store-bol-->
     <div class="speakers-area grey-bg">
         <div class="container">
             <div class="sub-heading">

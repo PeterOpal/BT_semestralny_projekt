@@ -14,6 +14,8 @@ import CasoveOkna from "../views/admin/CasoveOkna.vue";
 import ProgramView from "../views/ProgramView.vue";
 import Sloty from "../views/admin/Sloty.vue";
 import Speakers from "../views/admin/Speakers.vue";
+import CustomEditor from "../views/admin/CustomEditor.vue";
+import RegisterFormView from "../views/RegisterFormView.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -42,6 +44,10 @@ const router = createRouter({
             path: '/schedule',
             name: 'schedule',
             component: ProgramView
+        },
+        {
+            path: '/student-registration',
+            component: RegisterFormView
         },
         {
             path: '/register',
@@ -104,6 +110,18 @@ const router = createRouter({
             path: '/admin-sloty',
             name: "Admin-sloty",
             component: Sloty,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-editor',
+            name: "Admin-editor",
+            component: CustomEditor,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {
                     next();

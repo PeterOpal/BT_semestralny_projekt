@@ -127,7 +127,7 @@
                 title="Custom stránky"
             >
                 <template v-slot:actions>
-                    <v-btn @click="$router.push({ name: 'Admin-testimonials' })" text="Editor"></v-btn>
+                    <v-btn @click="$router.push({ name: 'Admin-editor' })" text="Editor"></v-btn>
                 </template>
             </v-card>
         </v-col>
