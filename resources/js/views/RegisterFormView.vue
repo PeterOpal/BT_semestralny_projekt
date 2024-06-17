@@ -1,32 +1,33 @@
 <template>
     <SubPageHeader page_name="REGISTRÁCIA"></SubPageHeader>
 
-    <h2 class="text-center">Registračný formulár na nConnect</h2>
+    <h2 class="text-center" style="padding-top: 50px;">Registračný formulár na nConnect</h2>
     <v-sheet class="mx-auto" width="400" style="padding-top: 20px; padding-bottom: 200px;">
-        <v-form @submit.prevent>
+        <v-form @submit.prevent="odoslat">
             <v-text-field
-                v-model="firstName"
-                :rules="rules"
+                v-model="data_na_odaslanie.meno"
+                :rules="nameRules"
                 label="Meno"
+                required
             ></v-text-field>
             <v-text-field
-                v-model="firstName"
-                :rules="rules"
+                v-model="data_na_odaslanie.priezvisko"
+                :rules="nameRules"
                 label="Priezvisko"
+                required
             ></v-text-field>
             <v-text-field
-                v-model="firstName"
-                :rules="rules"
+                v-model="data_na_odaslanie.mail"
+                :rules="mailRules"
                 label="E-mail"
             ></v-text-field>
-            <v-radio-group v-model="skola" style="display: block;">
+            <v-radio-group v-model="skola">
                 <v-radio label="Student" :value="1"></v-radio>
                 <v-radio label="Zamestnanec" :value="0"></v-radio>
             </v-radio-group>
             <template v-if="skola===1">
                 <v-text-field
-                    v-model="firstName"
-                    :rules="rules"
+                    v-model="data_na_odaslanie.nazov_skoly"
                     label="Skola"
                 ></v-text-field>
             </template>
@@ -40,30 +41,52 @@
                             item-title="nazov_prednasky"
                             item-value="id"
                             label="Zvolte prednasku"
-                            @update:modelValue="(prednaskaID) => zvolena_prednaska(prednaskaID, _id)"
+                            @update:modelValue="(prednaskaID) => zvolena_prednaska(prednaskaID, _id+1)"
                             outlined
                         ></v-select>
                     </v-col>
                 </v-row>
-            </v-container>
+            </v-container> {{data_na_odaslanie}}
+            <div class="text-center" style="color:red; font-weight: bolder">{{errorMSG}}</div>
             <v-btn class="mt-2" type="submit" block color="green">Odoslat</v-btn>
         </v-form>
     </v-sheet>
-
     <Footer></Footer>
 </template>
 <script>
 import SubPageHeader from "../components/SubPageHeader.vue";
 import Footer from "../components/Footer.vue";
 import { useProgramStore } from '@/stores/programStore';
+import axios from "axios";
+import router from "../router";
 
 export default {
     data(){
         return{
-            skola: -1,
+            errorMSG: '',
             programs: [],
+            skola: -1,
             loading: true,
-            selected_programs: [],
+            data_na_odaslanie: {
+                mail: '',
+                meno: '',
+                priezvisko: '',
+                nazov_skoly: '',
+                selected_programs: []
+            },
+            nameRules: [
+                value => {
+                    if (value?.length > 1) return true
+                    return 'Nemate vyplenene spravne pole!'
+                },
+            ],
+            mailRules: [
+                value => {
+                    const pattern = /^[a-z.-]+@[a-z.-]+\.[a-z]+$/i;
+                    if (pattern.test(value)) return true;
+                    return 'Musí to byť platný e-mail.';
+                }
+            ],
         }
     },
     components: {
@@ -81,9 +104,26 @@ export default {
             } catch (error) { console.error('Error fetching programs:', error);} finally {this.loading = false;}
         },
         zvolena_prednaska(selectedPrednaska, _id) {
-            this.selected_programs[_id]=selectedPrednaska;
-            console.log(this.selected_programs);
+            this.data_na_odaslanie.selected_programs[_id]=selectedPrednaska;
+            console.log(this.data_na_odaslanie);
         },
+        odoslat() {
+            if (this.data_na_odaslanie.meno.length>1 && this.data_na_odaslanie.priezvisko.length>1 && this.data_na_odaslanie.mail.length>4) {
+                console.log("Odoslany formular!");
+                alert("Odoslali sme e-mail, potvrdte svoje ucast. Dakujeme za registraciu!");
+                axios.post('api/ulozit-registraciu', this.data_na_odaslanie).then(response => {
+                    console.log("odoslal aj email");
+                    this.$router.push({ name: 'home' });
+                })
+                    .catch(error => {
+                        console.error('Error, email si nedostal');
+                    });
+            }
+            else{
+                this.errorMSG="Chybaju udaje";
+                console.error("Formular nebude odoslany!");
+            }
+        }
     },
     computed: {
         groupedPrograms() {

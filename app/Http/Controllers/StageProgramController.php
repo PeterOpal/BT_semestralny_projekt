@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stage;
 use App\Models\StageProgram;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,20 @@ class StageProgramController extends Controller
         //
         $programs = StageProgram::with(['speaker:id,meno,company_name,company_link,photo', 'sloty:id,od,do'])->get();
         return response()->json($programs);
+    }
+
+    public function getProgramsName($IDs)
+    {
+        $zvoleneProgramy = explode(',', $IDs);
+        $filtorovaneProgramy = array_filter($zvoleneProgramy, function ($id) { return $id !== null && $id != -1; });
+
+        $programs = StageProgram::whereIn('id', $filtorovaneProgramy)->with("sloty")->get(['nazov_prednasky', 'cas']);
+        //return json_encode($programs);
+        $result="";
+        foreach($programs as $program){
+            $result.= $program->sloty->od . " - " . $program->nazov_prednasky . "<br>";
+        }
+        return $result;
     }
 
     /**

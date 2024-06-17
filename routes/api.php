@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SlotyController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\SponsorsController;
@@ -70,3 +71,6 @@ Route::get('/sloty', [SlotyController::class, 'index']);
 Route::post('/sloty', [SlotyController::class, 'store']);
 Route::delete('/sloty/{id}', [SlotyController::class, 'destroy']);
 Route::patch('/sloty/{id}', [SlotyController::class, 'update']);
+
+//registracia na konferenciu
+Route::post("/ulozit-registraciu", [EmailController::class, 'sendEmail']);
