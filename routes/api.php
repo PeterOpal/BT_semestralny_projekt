@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\RegisteredStudentController;
 use App\Http\Controllers\SlotyController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\SponsorsController;
@@ -74,3 +75,4 @@ Route::patch('/sloty/{id}', [SlotyController::class, 'update']);
 
 //registracia na konferenciu
 Route::post("/ulozit-registraciu", [EmailController::class, 'sendEmail']);
+Route::get('/student/{token}', [RegisteredStudentController::class, 'activateStudent']);

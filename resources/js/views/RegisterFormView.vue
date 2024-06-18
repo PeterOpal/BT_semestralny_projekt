@@ -82,7 +82,7 @@ export default {
             ],
             mailRules: [
                 value => {
-                    const pattern = /^[a-z.-]+@[a-z.-]+\.[a-z]+$/i;
+                    const pattern = /^[a-z0-9.-]+@[a-z.-]+\.[a-z]+$/i;
                     if (pattern.test(value)) return true;
                     return 'Musí to byť platný e-mail.';
                 }
@@ -110,12 +110,14 @@ export default {
         odoslat() {
             if (this.data_na_odaslanie.meno.length>1 && this.data_na_odaslanie.priezvisko.length>1 && this.data_na_odaslanie.mail.length>4) {
                 console.log("Odoslany formular!");
-                alert("Odoslali sme e-mail, potvrdte svoje ucast. Dakujeme za registraciu!");
+                //alert("Odoslali sme e-mail, potvrdte svoje ucast. Dakujeme za registraciu!");
                 axios.post('api/ulozit-registraciu', this.data_na_odaslanie).then(response => {
                     console.log("odoslal aj email");
+
                     this.$router.push({ name: 'home' });
                 })
                     .catch(error => {
+                        alert('NASTAL CHYBA: '+error.response.data.msg);
                         console.error('Error, email si nedostal');
                     });
             }

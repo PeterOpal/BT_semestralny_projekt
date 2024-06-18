@@ -20,11 +20,13 @@ class StudentRegistraciaEmail extends Mailable
     public $meno;
     public $priezvisko;
     public $konvertovane_programy;
-    public function __construct($meno, $priezvisko, $converted_programs)
+    public $token;
+    public function __construct($meno, $priezvisko, $converted_programs, $token)
     {
         $this->meno=$meno;
         $this->priezvisko=$priezvisko;
         $this->konvertovane_programy=$converted_programs;
+        $this->token=$token;
     }
 
     /**
