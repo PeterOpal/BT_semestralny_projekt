@@ -23,13 +23,13 @@
                         <div id="testimonials">
                             <div class="single-testimonial" v-if="selectedTestimonial !== null">
                                 <div class="row">
-                                    <div class="col-sm-4 mb30">
+                                    <div class="mb30" style="margin-left: 20px;">
                                         <blockquote>{{ testimonials[selectedTestimonial].description }}</blockquote>
                                         <h4>{{ testimonials[selectedTestimonial].person }}</h4>
                                     </div>
-                                    <div class="">
+                                    <div class="" style="margin-left: 400px; ">
                                         <div class="client-image primary-shadow">
-                                            <img style="width: 200px; height: 200px;"
+                                            <img style="width: 300px; height: 350px;"
                                                  :src="'data:image/jpeg;base64,' + testimonials[selectedTestimonial].photo"
                                                  alt="client"/>
                                         </div>

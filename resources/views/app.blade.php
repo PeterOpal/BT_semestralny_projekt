@@ -7,6 +7,7 @@
     <meta name="author" content="bestpixels">
 
     <!-- Fav Icon  -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/ico/favicon-new-2.ico">
     <link href="images/ico/favicon-new-2.ico" rel="shortcut icon" type="image/x-icon">
     <link href="images/ico/favicon-new-2.ico" rel="icon" type="image/x-icon">

@@ -7,7 +7,7 @@
                         </div>
                         <div class="schedule-date">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li v-if="stages" v-for="(stage, index) in stages" :key="index" :class="{ active: index === 0 }">
+                                <li v-if="stages" v-for="(stage, index) in stages" :key="index">
                                     <a :href="'#stage-' + stage.id" data-toggle="tab">
                                         <h4>{{ stage.name }}</h4>
                                         <h5>{{ stage.datum }}</h5>

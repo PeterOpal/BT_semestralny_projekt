@@ -37,7 +37,7 @@
             </div><!-- /.col -->
             <div class="col-md-4 col-sm-12">
                 <div class="single-footer-widget">
-                    <a href="gdpr.php"><h4 style="text-transform: none;">Ochrana osobných údajov</h4></a>
+                        <DialogFullScreen v-for="stranka in stranky" :nazov_stranky="stranka.nazov_stranky" :html_kod="stranka.html_kod"></DialogFullScreen>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -56,7 +56,30 @@
             </div>
         </div>
     </div><!-- /.footer-bar-area -->
-
 </template>
-<script setup>
+<script>
+import {useStrankyStore} from "../stores/strankyStore";
+import DialogFullScreen from "./DialogFullScreen.vue";
+
+export default{
+    components: {DialogFullScreen},
+    data() {
+        return {
+            loading: true,
+            stranky: [],
+        };
+    },
+    created() {
+        this.fetchStranky();
+    },
+    methods: {
+        async fetchStranky() {
+            try {
+                const strankyStore = useStrankyStore();
+                if(strankyStore.stranky.length === 0)  await strankyStore.fetchStranky();
+                this.stranky = strankyStore.stranky;
+            } catch (error) { console.error('Error fetching stranky:', error);} finally {this.loading = false;}
+        },
+    },
+}
 </script>

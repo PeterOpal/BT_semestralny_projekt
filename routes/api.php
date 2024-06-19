@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomStrankaController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\RegisteredStudentController;
 use App\Http\Controllers\SlotyController;
@@ -75,4 +76,14 @@ Route::patch('/sloty/{id}', [SlotyController::class, 'update']);
 
 //registracia na konferenciu
 Route::post("/ulozit-registraciu", [EmailController::class, 'sendEmail']);
-Route::get('/student/{token}', [RegisteredStudentController::class, 'activateStudent']);
+Route::get('/student-data/{token}', [RegisteredStudentController::class, 'activateStudent']);
+Route::get("students", [RegisteredStudentController::class, 'getStudents']);
+Route::post('/student-data/{token}', [RegisteredStudentController::class, 'zrusitRezervaciu']);
+
+
+//stranka
+Route::get('/stranky', [CustomStrankaController::class, 'index']);
+Route::post('/stranky', [CustomStrankaController::class, 'store']);
+Route::delete('/stranky/{id}', [CustomStrankaController::class, 'destroy']);
+Route::patch('/stranky/{id}', [CustomStrankaController::class, 'update']);
+

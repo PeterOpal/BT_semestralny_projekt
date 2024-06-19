@@ -46,7 +46,7 @@
                         ></v-select>
                     </v-col>
                 </v-row>
-            </v-container> {{data_na_odaslanie}}
+            </v-container>
             <div class="text-center" style="color:red; font-weight: bolder">{{errorMSG}}</div>
             <v-btn class="mt-2" type="submit" block color="green">Odoslat</v-btn>
         </v-form>
@@ -113,7 +113,7 @@ export default {
                 //alert("Odoslali sme e-mail, potvrdte svoje ucast. Dakujeme za registraciu!");
                 axios.post('api/ulozit-registraciu', this.data_na_odaslanie).then(response => {
                     console.log("odoslal aj email");
-
+                    alert("Dostal si email od nas! Potvrd prosim to!");
                     this.$router.push({ name: 'home' });
                 })
                     .catch(error => {

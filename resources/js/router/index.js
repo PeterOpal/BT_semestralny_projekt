@@ -16,6 +16,9 @@ import Sloty from "../views/admin/Sloty.vue";
 import Speakers from "../views/admin/Speakers.vue";
 import CustomEditor from "../views/admin/CustomEditor.vue";
 import RegisterFormView from "../views/RegisterFormView.vue";
+import ManageRegistration from "../views/ManageRegistration.vue";
+import RegistrovaneStudenti from "../views/admin/RegistrovaneStudenti.vue";
+import CustomStranky from "../views/admin/CustomStranky.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -39,6 +42,10 @@ const router = createRouter({
             path: '/contact',
             name: 'contact',
             component: ContactView
+        },
+        {
+            path: '/manage-registration',
+            component: ManageRegistration
         },
         {
             path: '/schedule',
@@ -95,6 +102,30 @@ const router = createRouter({
             }
         },
         {
+            path: '/admin-students',
+            name: "Admin-students",
+            component: RegistrovaneStudenti,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-stranky',
+            name: "Admin-stranky",
+            component: CustomStranky,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
             path: '/admin-testimonials',
             name: "Admin-testimonials",
             component: Testimonials,
@@ -119,8 +150,26 @@ const router = createRouter({
             }
         },
         {
-            path: '/admin-editor',
+            path: '/admin-editor/:stranka_id/:nazov_stranky/:html_kod/:editstranku',
             name: "Admin-editor",
+            props: route => ({
+                stranka_id: route.params.stranka_id ? route.params.stranka_id : null,
+                nazov_stranky: route.params.nazov_stranky ? route.params.nazov_stranky : null,
+                html_kod: route.params.html_kod ? route.params.html_kod : null,
+                editstranku: route.params.editstranku ? route.params.editstranku === 'true' : false
+            }),
+            component: CustomEditor,
+            beforeEnter: (to, from, next) => {
+                axios.get("api/authenticated").then(() => {
+                    next();
+                }).catch(() => {
+                    return next({name: "login"});
+                });
+            }
+        },
+        {
+            path: '/admin-editor',
+            name: "Admin-editor-add",
             component: CustomEditor,
             beforeEnter: (to, from, next) => {
                 axios.get("api/authenticated").then(() => {

@@ -11,7 +11,7 @@ class StageProgram extends Model
 {
     use HasFactory;
     protected $table = 'stage_programs';
-    protected $fillable = ["cas", "nazov_prednasky", "popis", "stage_id", "speaker_id"];
+    protected $fillable = ["cas", "nazov_prednasky", "popis", "stage_id", "speaker_id", "obsadenost"];
 
     public function speaker(): BelongsTo
     {
@@ -21,5 +21,10 @@ class StageProgram extends Model
     public function sloty(): BelongsTo
     {
         return $this->belongsTo(Sloty::class, 'cas');
+    }
+
+    public function stage(): BelongsTo
+    {
+        return $this->belongsTo(Stage::class, 'stage_id');
     }
 }
